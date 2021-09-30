@@ -1,24 +1,25 @@
 specVersion: 0.0.2
-description: Indexing all Ethereum Block data
-repository: https://github.com/blocklytics/ethereum-blocks
+description: Indexing all xDAI Block data
+repository: https://github.com/kleros/ethereum-blocks
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: ConverterRegistryContract
-    network: rinkeby
+    name: EmptyContract
+    network: xdai
     source:
-      address: "0x0ddff327ddf7fe838e3e63d02001ef23ad1ede8e"
-      abi: ConverterRegistryContract
+      address: "0x09A83040907a600E87b5541E7FbB7D6B83eF9f2b"
+      abi: EmptyContract
+      startBlock: 18340066
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - ConverterAddition
+        - Block
       abis:
-        - name: ConverterRegistryContract
-          file: ./abis/ConverterRegistryContract.json
+        - name: EmptyContract
+          file: ./abis/EmptyContract.json
       blockHandlers:
         - handler: handleBlock
       file: ./src/mappings/blocks.ts
